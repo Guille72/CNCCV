@@ -104,7 +104,7 @@ class Calendrier
 
 
                 else {
-                    $rep = $this->db->prepareSMEF('SELECT * FROM bookings WHERE bookings.annulation IS NULL AND ? BETWEEN arrivee AND date_sub(depart, interval 1 day) AND nomMaison = ?',[$jour, $maison]);
+                    $rep = $this->db->prepareSMEF('SELECT * FROM bookings WHERE bookings.annulation IS NULL AND ? BETWEEN date_add(bookings.arrivee,interval 1 day) AND date_sub(depart, interval 1 day) AND nomMaison = ?',[$jour, $maison]);
 
                     // 1 est toujours vrai => on affiche un lien à chaque fois
                     // A vous de faire les tests nécessaire si vous gérer un agenda par exemple
