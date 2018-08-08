@@ -1,0 +1,6 @@
+.DS_Store
+app/.DS_Store
+config/config.php
+
+# Directories
+.idea
