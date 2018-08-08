@@ -38,16 +38,19 @@ class Calendrier
             $anneeCourante = date("Y");
         }
 
+
         $pas=0;
 
         $content="";
 
         //ici peut être défini le nombre de mois que l'on affiche "while ($pas<x) où x représente le nombre de mois affichés
-        while ($pas<3)
+        while ($pas<6)
         {
             $periode=$anneeCourante."-".$moisCourant;
 
-            $content.="<div style=\"font-size:12px;border:1px solid;margin:5px;\">".$this->buildCalendar($periode,$maison)."</div>";
+            $moisInt = intval($moisCourant);
+
+            $content.="<div class=\"calDiv\" id=\"$moisInt\" style=\"font-size:12px;margin:10px;\">".$this->buildCalendar($periode,$maison)."</div>";
 
             $moisCourant++;
             if ($moisCourant==13){$moisCourant=1;$anneeCourante++;}
@@ -70,7 +73,7 @@ class Calendrier
         $indexe = 1;
 
         // Affichage du mois et de l'année
-        $leCalendrier .= "\n\t<div style=\"text-align:center;color:#FF0048;font-size:15px;font-weight:bold;\">" . $this->monthNumToName($this->getMonth($periode)) . " " . $this->getYear($periode) . "</div>";
+        $leCalendrier .= "\n\t<div style=\"text-align:center;color:black;font-size:15px;font-weight:bold;\">" . $this->monthNumToName($this->getMonth($periode)) . " " . $this->getYear($periode) . "</div>";
 
         // Affichage des entêtes
         $leCalendrier .= "
@@ -104,7 +107,7 @@ class Calendrier
 
 
                 else {
-                    $rep = $this->db->prepareSMEF('SELECT * FROM bookings WHERE bookings.annulation IS NULL AND ? BETWEEN date_add(bookings.arrivee,interval 1 day) AND date_sub(depart, interval 1 day) AND nomMaison = ?',[$jour, $maison]);
+                    $rep = $this->db->prepareSMEF('SELECT * FROM bookings WHERE bookings.annulation IS NULL AND ? BETWEEN  date_add(arrivee,interval 1 day) AND date_sub(depart, interval 1 day) AND nomMaison = ?',[$jour, $maison]);
 
                     // 1 est toujours vrai => on affiche un lien à chaque fois
                     // A vous de faire les tests nécessaire si vous gérer un agenda par exemple

@@ -280,7 +280,7 @@ body{
 
 #resaForm{
     background-color: #FF0048;
-    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 10px!important;
 }
 #titleForm{
@@ -295,18 +295,26 @@ body{
 #dataPickerForm{
 }
 #submitResaForm{
-  vertical-align: middle;
 }
 #departInput{
   cursor: pointer;
+  color: white;
+  font-weight: bold;
 }
 #arriveInput{
   cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+#inputNbPersonne{
+  font-weight: bold!important;
 }
 .btnSubmit{
   background-color: white !important;
   color: #FF0048 !important;
 }
+.widthAuto{
+width: auto!important;}
 .bgBlueForm{
     background-color: #62BFCB!important;
 }
@@ -406,18 +414,23 @@ li{ list-style: none;
 .ligne {
   width: 220px;
   margin: 0 auto;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 2px!important;
+  padding-right: 2px!important;
+  margin-left: 2px!important;
+  margin-right: 2px!important;
   text-align: center;
+  display: flex!important;
+  flex-wrap: nowrap!important; 
 }
 
 .libelle li {
   float : left;
   width : 30px;
+  color: black;
 }
 
 .ligne li {
-  color: white;
+  color: black;
   float : left;
   width : 30px;
 }
@@ -427,8 +440,8 @@ li{ list-style: none;
 li.itemCurrentItem {
   font-weight:bold;
   font-style: italic;
-  background-color: #3E849E;
-  color: black;
+  /* background-color: #53d397; */
+  color: #7CBECB;
 }
 
 li.itemSelectedItem {
@@ -436,38 +449,82 @@ li.itemSelectedItem {
 }
 
 li.itemExistingItem {
-  background-color:#ff6959;
-  text-decoration:line-through;
+  background-color:#ff6473;
+  text-decoration: line-through;
 }
 
 
 li.itemPastItem {
-  color:grey;
-  background-color:white;
+  color:#757882;
 }
 
 li.itemPickableItem {
   cursor: pointer;
   font-style: normal;
   color:black;
+  padding: 1px!important;
 }
-
+.hoverItem{
+  background-color: #7CBECB;
+}
 .titleCal{
   margin: 0 auto;
   font-size:25px;
   font-weight:bold;
-  color: #FF0048!important;
+  color: #428FA2!important;
   margin-bottom:20px;
   text-align: center;
 }
 .contentCal{
-  display: none;
+  display: flex;
   flex-wrap: wrap;
   align-items: center!important;
   justify-content: center!important;
   align-self: center !important;
 }
 
+#calRow{
+  display: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+.materialbox-overlay{
+  z-index: 9000!important;
+}
+
+#arrowLeft{
+}
+#arrowRight{
+}
+.arrow{
+  cursor:pointer;
+}
+
+.calDiv{
+  display: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.calDiv *{
+
+}
+
+.displayM{
+  display: block!important;
+}
+
 .clickedItem{
-  background-color: blue!important;
+  background-color: #368E9E!important;
+}
+
+#maisonTitle{
+  border-left: 2px solid #FF0048;
+  border-bottom: 2px solid #FF0048;
+}
+
+.zIndex *{
+  z-index: -1!important;
 }

@@ -31,11 +31,17 @@ require 'resa.php';
 
 <div class="container">
 
+<br>
+
+  <div id="maisonTitle" class="col s12 m8 l8 offset-l2">
+  <span>&nbsp;Chez <?= ucfirst($p); ?></span>
+  </div>
+
    <div class="carousel col m12 s12 l12">
             <?=  $carrousel ?>
     </div>
 
-    <div class="row">
+    <div class="row zIndex">
         <div class="col m6 l6 s12">
             <div class="card" id="animInfo1">
                 <div class="card-content">
@@ -72,9 +78,3 @@ require 'resa.php';
 
 
 <iframe src="<?= $parametres['Googlemap']; ?>" width="100% !important;" frameborder="0" style="border:0; height: 250px !important;" allowfullscreen></iframe>
-
-
-
-<script type="text/javascript">
-    M.AutoInit();
-</script>
