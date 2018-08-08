@@ -24,7 +24,7 @@
 
     <!-- Selection du nb de personnes -->
     <div class="col s2" id="nbPersonne">
-        <?= $Form->input('number','NombrePersonne','align whiteColor','inputNbPersonne','min="1" max="8" placeholder="Nombre de personne" ') ?>
+        <?= $Form->input('number','NombrePersonne','align whiteColor','inputNbPersonne','min="1" max="8" placeholder="Nombre de personnes" ') ?>
         <!-- <input type="range" id="nbPers" name="NombrePersonne" /> -->
     </div>
 
@@ -38,10 +38,27 @@
     </div>
 
   </div>
-  <div class="row">
-    <div id="contentCalId" class="contentCal col s8 offset-s1">
-       <?= $Calendar; ?>
+  <div class="row" id="calRow">
+
+
+
+    <div id="contentCalId" class="contentCal col s12 m12 l12 tooltipped" data-position="bottom" data-tooltip="Selectionnez une date d'arrivée et de départ">
+      <div id="arrowLeft" onclick="previousM(allCal)" class="">
+
+          <i class="material-icons large arrow">keyboard_arrow_left</i>
+
+      </div>
+        <?= $Calendar; ?>
+        <div id="arrowRight" onclick="nextM(allCal)" class="">
+
+            <i class="material-icons large arrow">keyboard_arrow_right</i>
+
+        </div>
     </div>
+
+
+
     </div>
-  </div>
 </form>
+
+<br>

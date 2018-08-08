@@ -14,8 +14,7 @@ Class Formulaire {
     /**
      * @var string
      */
-    public $surround ='p';
-
+    public $surround ='div';
     /**
      * Form constructor.
      * @param array $data
@@ -27,6 +26,10 @@ Class Formulaire {
 
     public function surround($html){
         return "<{$this->surround}>{$html}</{$this->surround}>";
+    }
+
+    public function surroundSubmit($html){
+        return "<{$this->surround}"." class='widthAuto'".">{$html}</{$this->surround}>";
     }
 
     /**
@@ -55,7 +58,7 @@ Class Formulaire {
      * @return string
      */
     public function submit($name, $class, $text) {
-        return $this->surround('<button type="submit" name="' . $name . '" class="' . $class . '">' . $text . '</button>');
+        return $this->surroundSubmit('<button type="submit" name="' . $name . '" class="' . $class . '">' . $text . '</button>');
     }
 
 }
