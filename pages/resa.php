@@ -1,5 +1,37 @@
+<?php
+
+// instanciation de Sejour
+$Sejour=$app->getSejour($_POST);
+
+
+//Traitement des résultats du formulaire
+if ($_POST!=null) {$dispoPrix = $Sejour->dispoPrix();}
+
+//Affichage de la Barre de navigation selon résultats (ou non) du formulaire
+// if ($_SESSION['arrivee']!=null) {
+//     require 'navbarBasAvecPost.php';
+//     require 'resultatMaison.php';
+// }else {
+//     require 'navbarBas.php';
+// }
+
+//Instanciation du calendrier
+$Calendrier=$app->getCalendrier($_SESSION);
+if (isset($_GET['p'])) {
+  $home = $_GET['p'];
+}
+else {
+  $home = 0;
+}
+$Calendar=$Calendrier->afficherCalendrier($home);
+
+//Instanciation des fonctionnalités du formulaire
+$Form=new \App\Formulaire($_SESSION);
+ ?>
+
+
 <!-- formulaire "Séjour" : arrivée, départ, Nombre de personnes -->
-<Form method="post" action="" class="col s12 m12 l12">
+<Form method="post" action="" class="col s12 m12 l12 marginTop2">
   <div class="row" id="resaForm">
 
     <!-- Titre -->
@@ -30,7 +62,7 @@
 
 
     <!-- Button submit -->
-    <div class="col" id="submitResaForm">
+    <div class="col" id="submitResaForm" onclick="submitForm()">
 
         <?= $Form->submit('action','btn waves-effect waves-red btnSubmit','Poursuivre ma réservation
         <i class="material-icons right">send</i>') ?>

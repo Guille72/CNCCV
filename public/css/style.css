@@ -13,13 +13,10 @@ textarea:focus {
     resize: none !important;
     outline: none !important;
 }
-@media screen and (max-width: 364px){
-        .sidenavBig{
-            width: 80% !important;
-        }
-
+.centerUl{
+  display: flex;
+  justify-content: center;
 }
-
 .noMargin{
   margin: 0!important;
 }
@@ -420,7 +417,7 @@ li{ list-style: none;
   margin-right: 2px!important;
   text-align: center;
   display: flex!important;
-  flex-wrap: nowrap!important; 
+  flex-wrap: nowrap!important;
 }
 
 .libelle li {
@@ -527,4 +524,102 @@ li.itemPickableItem {
 
 .zIndex *{
   z-index: -1!important;
+}
+#nav{
+  z-index: 500;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#navTitle{
+  color: #5c636e;
+}
+
+.navLi{
+  color: #5c636e!important;
+}
+
+nav > li{
+  color: #5c636e;
+}
+.colorGrey{
+  color: #5c636e;
+}
+.colorRed{
+  color: #EA0B4D;
+}
+
+/* burger */
+#burger{
+  position: fixed;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  z-index: 501;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: transparent;
+}
+
+@keyframes burgerAnimeUp {
+  from {width: 0%;color: transparent;}
+  to {width: 40%;color: black;}
+}
+.burgerUp{
+  animation-name: burgerAnimeUp;
+  animation-duration: 0.5s;
+  width: 40%!important;
+  color: black!important;
+  z-index: 9999!important;
+}
+
+@keyframes burgerAnimeDown {
+  from {width: 40%;color: black;}
+  to {width: 0%;color: transparent;}
+}
+.burgerDown{
+  animation-name: burgerAnimeDown;
+  animation-duration: 0.5s;
+  width: 0%!important;
+  color: transparent!important;
+  z-index: 501 !important;
+}
+
+#burgerFond{
+  position: fixed;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  z-index: 9998;
+  opacity: 0.8;
+}
+
+@keyframes burgerFondAnimeUp {
+  from {width: 0%;}
+  to {width: 100%;}
+}
+.burgerFondUp{
+  animation-name: burgerFondAnimeUp;
+  width: 100%!important;
+}
+
+@keyframes burgerFondAnimeDown {
+  from {width: 100%;}
+  to {width: 0%;}
+}
+.burgerFondDown{
+  animation-name: burgerFondAnimeDown;
+  width: 0%!important;
+}
+
+#burgerContent{
+  display: none;
+}
+.displayOk{
+  display: block!important;
 }

@@ -2,12 +2,14 @@
 <img class="responsive-img" src="../public/img/PanoramaLeMans.JPG" >
 
 <?php
-require '../pages/navbarHaut.php';
-require '../pages/navbarBas.php';
+require '../pages/navbar.php';
 $_SESSION['arrivee']=null;
 $_SESSION['depart']=null;
 $_SESSION['nombrePersonne']=null;
+
+require '../pages/resa.php';
 ?>
+
 
 
 <ul class="sidenav sidenavBig sidenavWidth" id="mobile-demo">

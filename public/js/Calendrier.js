@@ -6,7 +6,7 @@ var allCal = document.getElementsByClassName('calDiv');
 
 // modifier howMuchCal afin d'afficher le nombre de calendrier voulu,
 // il est maintenant inutile de modifier la variable php $pas
-var howMuchCal = 3;
+var howMuchCal = 1;
 
 initCal(allCal,howMuchCal);
 

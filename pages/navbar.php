@@ -1,52 +1,154 @@
-<nav class="nav-extended nav1 nav" style="background-color: white" id="navbar">
-    <div class="nav-wrapper">
-        <a href="../Public/index.php" style="height: 200px; width: 200px"><img href="index.php" src="../public/img/logo_cnccv6_155x155.png" id="logo"
-                                                                               class="brand-logo"
-                                                                               style="height: 130px; width: auto;"></a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons"
-                                                                         style="color: #7BBECB">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a class="colortext" href="../Public/index.php#AllMaison">Toutes les maisons</a></li>
-            <li><a class="colortext" href="index.php?p=contact">Contact</a></li>
-            <li><a href="#"></a></li>
-        </ul>
-    </div>
-    <div class="hide-on-large-only"><br></div>
-    <div class="nav-content hide-on-med-and-down displayNScroll" id="cc">
-        <ul class="centreETC tabs-transparent align_ul displayNScroll">
-            <li class="tab li1 li"><a class="active colortext colortext1 waves-green" href="index.php?p=rousseau"><h6>Chez
-                        Rousseau</h6></a></li>
-            <li class="tab li"><a href="index.php?p=champion" class="colortext colortext1 waves-green"><h6>Chez
-                        Champion</h6></a></li>
-            <li class="tab li li3"><a href="index.php?p=painleve" class="colortext colortext1 waves-green"><h6>Chez
-                        Painlevé</h6></a></li>
-        </ul>
-        <br>
-    </div>
-    <div class="nav-content displayNScroll" id="cc">
-        <ul class="centreETC tabs-transparent hide-on-large-only displayNScroll align_ul">
-            <li class="tab li1 li"><a class="active colortext colortext1 waves-green" href="index.php?p=rousseau" style="font-size: 14px !important;">Chez
-                        Rousseau</a></li>
-            <li class="tab li"><a <a href="index.php?p=champion" class="colortext colortext1 waves-green" style="font-size: 14px !important;">Chez
-                        Champion</a></li>
-            <li class="tab li li3"><a href="index.php?p=painleve" class="colortext colortext1 waves-green" style="font-size: 14px !important;">Chez
-                        Painlevé</a></li>
-        </ul>
-        <br>
-    </div>
+<!-- PC -->
+<nav id="nav" class="sticky hide-on-med-and-down">
+  <div class="nav-wrapper">
+    <a href="../Public/index.php" id="navTitle" class="brand-logo">&nbsp; Chez Nous comme Chez Vous</a>
 
+    <ul class="right">
+      <li><a class="navLi" href="index.php?p=contact">CONTACT</a></li>
+      <li><a class="navLi dropdown-trigger" data-target='dropdown1'>LES MAISONS</a></li>
+      <li><a class="navLi" onclick="alert('En cours de developpement')">SE CONNECTER</a></li>
+    </ul>
 
-
-
+  </div>
 </nav>
 
 
-<ul class="sidenav sidenavBig sidenavWidth" id="mobile-demo">
-    <div class="bgBleuC" style="padding: 10px !important;"><h6 style="margin: 0 !important;" class="white-text align colortext1">Menu</h6></div>
+<ul id='dropdown1' class='dropdown-content'>
 
-    <li><a class="sideNavText" href="../Public/index.php"><span class="badge new">3</span>Toutes les maisons</a></li>
-    <li><a class="sideNavText" href="index.php?p=contact">Contact</a></li>
-    <li><a class="sideNavText" href="index.php?p=ml">Mentions légales</a></li>
-    <li><a class="sideNavText" href="index.php?p=cu">Conditions d'utilisation</a></li>
-    <li><a class="sideNavText" href="#">Qui sommes nous</a></li>
+  <li><a onclick="displayBurger()">Resumé</a></li>
+
+  <li class="divider" tabindex="-1"></li>
+
+  <?php
+  require ROOT.'/settings/maisons.php';
+  foreach ($maisons as $maison):
+  ?>
+
+  <li class="centerUl"><a href="index.php?p=<?= $maison ?>">
+    <i class="material-icons">
+      home
+    </i>
+    <?= ucfirst($maison) ?></a></li>
+
+  <?php endforeach; ?>
+
 </ul>
+
+
+<!-- MOBILE -->
+<nav id="nav" class="nav-extended sticky hide-on-large-only">
+  <div class="nav-wrapper center">
+
+    <a href="../Public/index.php" id="navTitle" class="center">&nbsp; Chez Nous comme Chez Vous</a>
+
+  </div>
+
+  <div class="nav-content">
+
+    <ul class="centerUl">
+      <li><a class="navLi" href="index.php?p=contact">CONTACT</a></li>
+      <li><a class="navLi" onclick="displayBurger()">LES MAISONS</a></li>
+      <li><a class="navLi" onclick="alert('En cours de developpement')">SE CONNECTER</a></li>
+    </ul>
+
+    <br>
+
+  </div>
+</nav>
+
+
+
+<div id="burger">
+
+  <div id="burgerContent">
+
+  <table class="responsive-table centered">
+          <thead>
+            <tr>
+                <th>Maison</th>
+                <th>Disponibilité</th>
+                <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <?php
+            require ROOT.'/settings/maisons.php';
+
+            if (isset($_POST['arrivee'])) {
+
+            foreach ($maisons as $maison):
+            ?>
+
+            <tr>
+              <td><a href="index.php?p=<?= $maison ?>">Chez <?= ucfirst($maison) ?></a></td>
+              <td><?= $_SESSION[$maison] ?></td>
+              <td>
+              <?php
+
+              if ($_SESSION[$maison] != "Pas dispo") {
+                echo "<i class='material-icons colorRed left'>send</i>";
+              }
+              else {
+                echo "<i class='material-icons colorGrey left'>clear</i>";
+              }
+
+               ?>
+              </td>
+            </tr>
+
+          <?php endforeach; }
+
+          else {
+            foreach ($maisons as $maison): ?>
+
+            <tr>
+              <td><a href="index.php?p=<?= $maison ?>">Chez <?= ucfirst($maison) ?></a></td>
+              <td>//Prix d'une nuit de <?= $maison ?></td>
+            </tr>
+
+            <?php  endforeach; }?>
+
+
+          </tbody>
+        </table>
+
+  </div>
+
+</div>
+
+<div id="burgerFond" onclick="hideBurger()"></div>
+
+<script>
+
+
+function displayBurger(){
+
+document.getElementById('burger').classList.add('burgerUp');
+document.getElementById('burgerFond').classList.add('burgerFondUp');
+
+document.getElementById('burgerContent').classList.add('displayOk');
+
+document.getElementById('burger').classList.remove('burgerDown');
+document.getElementById('burgerFond').classList.remove('burgerFondDown');
+
+}
+
+function hideBurger(){
+
+  document.getElementById('burger').classList.add('burgerDown');
+  document.getElementById('burgerFond').classList.add('burgerFondDown');
+
+  document.getElementById('burgerContent').classList.remove('displayOk');
+
+  document.getElementById('burger').classList.remove('burgerUp');
+  document.getElementById('burgerFond').classList.remove('burgerFondUp');
+
+}
+
+function submitForm(){
+window.location = window.location;ç
+}
+
+</script>

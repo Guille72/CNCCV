@@ -1,8 +1,8 @@
-<?php require '../pages/navbarHaut.php';
+<?php
 if ($_SESSION['arrivee']!=null) {
-    require 'navbarBasAvecPost.php';
+    require 'navbar.php';
 }else {
-    require 'navbarBas.php';
+    require 'navbar.php';
 }
 ?>
 <!--
