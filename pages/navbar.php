@@ -1,12 +1,12 @@
 <!-- PC -->
 <nav id="nav" class="sticky hide-on-med-and-down">
   <div class="nav-wrapper">
-    <a href="../Public/index.php" id="navTitle" class="brand-logo">&nbsp; Chez Nous comme Chez Vous</a>
+    <a href="../Public/index.php" id="navTitle" class="brand-logo white-text">&nbsp; Chez Nous comme Chez Vous</a>
 
     <ul class="right">
-      <li><a class="navLi" href="index.php?p=contact">CONTACT</a></li>
-      <li><a class="navLi dropdown-trigger" data-target='dropdown1'>LES MAISONS</a></li>
-      <li><a class="navLi" onclick="alert('En cours de developpement')">SE CONNECTER</a></li>
+      <li><a class="navLi colortext" href="index.php?p=contact">CONTACT</a></li>
+      <li><a class="navLi colortext dropdown-trigger" data-target='dropdown1'>LES MAISONS</a></li>
+      <li><a class="navLi colortext" onclick="alert('En cours de developpement')">SE CONNECTER</a></li>
     </ul>
 
   </div>

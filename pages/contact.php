@@ -11,6 +11,9 @@ if ($_SESSION['arrivee']!=null) {
 
 <div class="marginTop hide-on-large-only"></div> -->
 
+<div class="margin30px">
+
+</div>
 
 <h5 class="colortext center-align">Envie de donner votre avis ?</h5>
 
@@ -23,13 +26,13 @@ if ($_SESSION['arrivee']!=null) {
             <div class="form-group col s12 m6 l6">
                 <div class="row">
                     <div class="col offset-m1 offset-l1 offset-s1">
-                        <label class="white-text"><h6>Votre nom</h6></label>
+                        <label class="colortext"><h6>Votre nom</h6></label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col s1 m1 l1" style="height: 50px">
-                        <i class="material-icons small white-text" style="margin-top: 20px">account_circle</i>
+                        <i class="material-icons small colortext" style="margin-top: 20px">account_circle</i>
                     </div>
                     <div class="col s1 m1 hide-on-large-only"></div>
                     <div class="col s10 m10 l11">
@@ -43,13 +46,13 @@ if ($_SESSION['arrivee']!=null) {
             <div class="form-group col s12 m6 l6">
                 <div class="row">
                     <div class="col offset-m1 offset-l1 offset-s1">
-                        <label class="white-text"><h6>Votre mail</h6></label>
+                        <label class="colortext"><h6>Votre mail</h6></label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col s1 m1 l1" style="height: 50px">
-                        <i class="material-icons small white-text" style="margin-top: 20px">mail</i>
+                        <i class="material-icons small colortext" style="margin-top: 20px">mail</i>
                     </div>
                     <div class="col s1 m1 hide-on-large-only"></div>
                     <div class="col s10 m10 l11">
@@ -66,7 +69,7 @@ if ($_SESSION['arrivee']!=null) {
         <div class="row">
 
             <div class="form-group col s10 offset-s1 m8 offset-m2">
-                <label class="white-text"><h6>Votre sujet</h6></label>
+                <label class="colortext"><h6>Votre sujet</h6></label>
                 <input type="text" id="subject" name="subject" class="form-control input_form"/></label>
             </div>
 
@@ -75,7 +78,7 @@ if ($_SESSION['arrivee']!=null) {
         <br>
 
         <div class="form-group ">
-            <label class="white-text"><h6>Votre message</h6></label>
+            <label class="colortext"><h6>Votre message</h6></label>
             <textarea id="message" name="message" class="form-control textarea_form"></textarea>
         </div>
 
@@ -83,9 +86,9 @@ if ($_SESSION['arrivee']!=null) {
         <br>
 
         <div class="row">
-            <div class="col s6 m6 l6 white-text">
+            <div class="col s6 m6 l6 colortext">
                 Accepter nos <a target="_blank" href="index.php?p=cu">Conditions d'utilisations</a>
-                <label class="white-text">
+                <label class="colortext">
                     <input class="white white-text" id="indeterminate-checkbox" name="checkCU"
                            type="checkbox" style="background-color: white !important;"/>
                     <span class="white-text"></span>
@@ -94,7 +97,7 @@ if ($_SESSION['arrivee']!=null) {
             <div class="form-group col s4 m4 l4" align="center">
 
                 <input type="submit" onclick="M.toast({html: 'Message envoyé. Merci!',classes: 'rounded toastSend'})"
-                       id="submit" name="submit" value="Envoyer" class="btn white colortext"
+                       id="submit" name="submit" value="Envoyer" class="btn bgRouge white-text"
                        style="width: 100%"/>
             </div>
         </div>

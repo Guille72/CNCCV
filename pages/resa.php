@@ -44,12 +44,12 @@ $Form=new \App\Formulaire($_SESSION);
 
 
       <div class="col s2" id="dataPicker1">
-        <?= $Form->input('text','arrivee','align','arriveInput','placeholder="Arrivée" readonly') ?>
+        <?= $Form->input('text','arrivee','align wh','arriveInput','placeholder="Arrivée" readonly') ?>
       </div>
 
 
       <div class="col s2" id="dataPicker2">
-        <?= $Form->input('text','depart','align','departInput','placeholder="Départ" readonly') ?>
+        <?= $Form->input('text','depart','align wh','departInput','placeholder="Départ" readonly') ?>
       </div>
 
     </div>
