@@ -1,7 +1,5 @@
 <?php
 require '../pages/navbar.php';
-
-
 require 'resa.php';
 
 ?>
@@ -15,9 +13,15 @@ require 'resa.php';
   <span>&nbsp;Chez <?= ucfirst($p); ?></span>
   </div>
 
-   <div class="carousel col m12 s12 l12">
-            <?=  $carrousel ?>
-    </div>
+  <?php
+
+  if ($p === 'rousseau') {
+   echo "<div class='carousel col m12 s12 l12'>";
+   echo $carrousel;
+   echo "</div>";
+  }
+
+    ?>
 
     <div class="row zIndex">
         <div class="col m6 l6 s12">

@@ -60,9 +60,7 @@ elseif ($p==='rousseau' or $p==='champion' or $p==='painleve'){
     $carrousel=\App\Logements\Logements::getCarrousel($p);
     $parametres=$app->getParametreLogement($p);
     require ROOT.'/Pages/maison.php';
-    if ($p==='rousseau') {
-      require ROOT.'/Public/js/Calendrier.js';
-    }
+    require ROOT.'/Public/js/Calendrier.js';
 }
 
 else {

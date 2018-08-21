@@ -39,7 +39,7 @@
 <nav id="nav" class="nav-extended sticky hide-on-large-only">
   <div class="nav-wrapper center">
 
-    <a href="../Public/index.php" id="navTitle" class="center">&nbsp; Chez Nous comme Chez Vous</a>
+    <a href="../Public/index.php" id="navTitle" class="center white-text">&nbsp; Chez Nous comme Chez Vous</a>
 
   </div>
 
