@@ -100,10 +100,9 @@ class Calendrier
                     $jour = Date("Y-m-d",mktime(0, 0, 0, $this->getMonth($periode), 1 + $pas, $this->getYear($periode))) ;
                     $jourFormatFrench = Date("d/m/Y",strtotime($jour));
                     $num_id=strtotime($jour)/86400;
-                if (Date("Y-m-d", mktime(0, 0, 0, $this->getMonth($periode),
-                        1 + $pas, $this->getYear($periode))) <= Date("Y-m-d")) {
-                    $class = " class=\"itemPastItem $num_id\" id=\"".$jourFormatFrench."\"   onclick=\" \""; if (Date("Y-m-d", mktime(0, 0, 0, $this->getMonth($periode),
-                            1 + $pas, $this->getYear($periode))) == Date("Y-m-d")) {
+                if ($jour <= Date("Y-m-d") || $jour > Date("Y-m-d",strtotime('+183 day'))) {
+                    $class = " class=\"itemPastItem $num_id\" id=\"".$jourFormatFrench."\"   onclick=\" \"";
+                    if ($jour == Date("Y-m-d")) {
                         $class = " class=\"itemCurrentItem $num_id\" id=\"".$jourFormatFrench."\" onmouseover=\"showDay(this,dayList)\"   onclick=\"selectDay(this,dayList)\""; }}
 
 
