@@ -75,14 +75,14 @@ body{
 }
 .input_form{
     border-bottom: 1px solid #EA0B4D !important;
-    color: #EA0B4D!important;
+    color: grey!important;
 }
 .input_form:focus{
-    border-bottom: 1px solid #EA0B4D!important;
-    box-shadow: 0 1px 0 0 #EA0B4D !important;
+    border-bottom: 1px solid grey!important;
+    box-shadow: 0 1px 0 0 grey !important;
 }
 .textarea_form{
-    color: #EA0B4D;
+    color: grey;
     height: 90px;
     border: 1px solid #EA0B4D!important;
     border-bottom-right-radius: 20px;
@@ -91,7 +91,7 @@ body{
     resize: none;
 }
 .textarea_form:focus{
-    border: 2px solid #EA0B4D!important;
+    border: 2px solid grey!important;
     border-bottom-right-radius: 20px !important;
     border-top-left-radius: 20px !important;
 
@@ -244,8 +244,8 @@ body{
     height: 400px;
     width: 90%;
     box-shadow: 0 15px 32px rgba(0,0,0,0.30), 0 12px 10px rgba(0,0,0,0.22);
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
+    margin: 0 auto;
+    float: none;
     margin-bottom: 10px;
 }
 .bgRouge{
@@ -280,7 +280,7 @@ body{
 
 
 #resaForm{
-    background-color: #EA0B4D;
+    background-color:#EA0B4D ;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 10px!important;
 }

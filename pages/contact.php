@@ -90,13 +90,13 @@ if ($_SESSION['arrivee']!=null) {
                 Accepter nos <a target="_blank" href="index.php?p=cu">Conditions d'utilisations</a>
                 <label class="colortext">
                     <input class="white white-text" id="indeterminate-checkbox" name="checkCU"
-                           type="checkbox" style="background-color: white !important;"/>
+                           type="checkbox" style="background-color: white !important;" required/>
                     <span class="white-text"></span>
                 </label>
             </div>
             <div class="form-group col s4 m4 l4" align="center">
 
-                <input type="submit" onclick="M.toast({html: 'Message envoyé. Merci!',classes: 'rounded toastSend'})"
+                <input type="submit"
                        id="submit" name="submit" value="Envoyer" class="btn bgRouge white-text"
                        style="width: 100%"/>
             </div>

@@ -44,58 +44,50 @@ class Sejour {
      * @return string
      */
 
+     public function dispoPrix(){
+         //$maisons=$this->db->queryAllSMEF('SELECT nomMaison FROM logements');
+
+         //var_dump($maisons);
+        require ROOT.'/settings/maisons.php';
+         // var_dump($maisons);
+        // var_dump($maisons[1]);
+        // var_dump($maisons[2]);
+
+         $_SESSION['arrivee']= $this->data['arrivee'];
+         $_SESSION['depart']= $this->data['depart'];
+         $_SESSION['NombrePersonne']=$this->data['NombrePersonne'];
+
+         $this->data['arrivee']=$this->formateDateYmd($this->data['arrivee']);
+         $this->data['depart']=$this->formateDateYmd($this->data['depart']);
+
+         foreach ($maisons as $maison) {
+             //var_dump($maison);
+             $persMax=$this->db->prepareSMEF('SELECT persMax FROM logements WHERE nomMaison= ?',[$maison]);
+             $_SESSION['dispo'.$maison]=$this->disponibilite($maison);
+             if ($_SESSION['dispo'.$maison]=== true && $this->data['NombrePersonne'] > $persMax['persMax']){
+                 $_SESSION[$maison] = 'Limité à '.$persMax['persMax'].' personnes';
+             }elseif ($_SESSION['dispo'.$maison]=== true && $this->data['NombrePersonne'] <= $persMax['persMax']) {
+                 $prix=$this->PrixDuSejour($maison);
+                 $_SESSION[$maison]=$prix['PrixSejourTotalTTC'].' euros';
+                 $_SESSION[$maison.'PrixSejourTotalTTC']=$prix['PrixSejourTotalTTC'];
+                 $_SESSION[$maison.'TaxeSejour']=$prix['TaxeSejour'];
+                 $_SESSION[$maison.'PrixSejourHT']=$prix['PrixSejourHT'];
+                 $_SESSION[$maison.'TvaSejour']=$prix['TvaSejour'];
+                 $_SESSION[$maison.'NombreMenage']=$prix['NombreMenage'];
+                 $_SESSION[$maison.'PrixMenageHT']=$prix['PrixMenageHT'];
+                 $_SESSION[$maison.'TvaMenage']=$prix['TvaMenage'];
+
+             }else {
+                 $_SESSION[$maison]='Pas dispo';
+             }
+         }
+         return;
+     }
 
     /**
      *
      * Génère le formulaire
      * @return string
-
-    public function formulaireSejour(){
-
-          $content='<Form method="post" action="">
-                      <div id="resaForm" >
-                            <!-- Titre -->
-                        <div id="titleForm">
-                          <h5>Reservez dès maintenant</h5>
-                        </div>
-
-          <!-- Selection du nb de personnes -->
-                    <div id="nbPersonne">
-                      <p class="range-field">'.
-                        $this->input('range','NombrePersonne', 'Nombre de personnes').'
-                      </p>
-                    </div>
-
-          <!-- Choix de la date -->
-                    <div id="dataPickerForm" class="row">
-
-                      <div class="col s6">
-                      '.$this->input('date','arrivee', 'Arrivée').'
-                    </div>
-
-                      <div class="col s6">
-                      '.$this->input('date','depart', 'Départ').'
-                    </div>
-
-                    </div>
-
-
-              <!-- Button submit -->
-                    <div id="submitResaForm" class="row">
-
-                      <div class="col s12">
-                      <button class="btn waves-effect waves-light bgBlueForm" type="submit" name="action">Poursuivre ma réservation
-                        <i class="material-icons right">send</i>
-                      </button>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </form>';
-
-        return $content;
-    }
      */
     /**
      * teste la disponibilité d'un séjour sur la $maison sélectionnée
@@ -105,7 +97,7 @@ class Sejour {
      */
 
 
-    public function disponibilite($maison){
+    private function disponibilite($maison){
 
         $this->data['arrivee']= date('Y-m-d',strtotime($this->data['arrivee']));
         $this->data['depart']= date('Y-m-d',strtotime($this->data['depart']));
@@ -135,42 +127,7 @@ class Sejour {
      * @return $result array
      */
 
-    public function dispoPrix(){
-        //$maisons=$this->db->queryAllSMEF('SELECT nomMaison FROM logements');
 
-        //var_dump($maisons);
-       require ROOT.'/settings/maisons.php';
-        // var_dump($maisons);
-       // var_dump($maisons[1]);
-       // var_dump($maisons[2]);
-
-        $_SESSION['arrivee']= $this->data['arrivee'];
-        $_SESSION['depart']= $this->data['depart'];
-        $_SESSION['NombrePersonne']=$this->data['NombrePersonne'];
-
-        foreach ($maisons as $maison) {
-            //var_dump($maison);
-            $persMax=$this->db->prepareSMEF('SELECT persMax FROM logements WHERE nomMaison= ?',[$maison]);
-            $_SESSION['dispo'.$maison]=$this->disponibilite($maison);
-            if ($_SESSION['dispo'.$maison]=== true && $this->data['NombrePersonne'] > $persMax['persMax']){
-                $_SESSION[$maison] = 'Limité à '.$persMax['persMax'].' personnes';
-            }elseif ($_SESSION['dispo'.$maison]=== true && $this->data['NombrePersonne'] <= $persMax['persMax']) {
-                $prix=$this->PrixDuSejour($maison);
-                $_SESSION[$maison]=$prix['PrixSejourTotalTTC'].' euros';
-                $_SESSION[$maison.'PrixSejourTotalTTC']=$prix['PrixSejourTotalTTC'];
-                $_SESSION[$maison.'TaxeSejour']=$prix['TaxeSejour'];
-                $_SESSION[$maison.'PrixSejourHT']=$prix['PrixSejourHT'];
-                $_SESSION[$maison.'TvaSejour']=$prix['TvaSejour'];
-                $_SESSION[$maison.'NombreMenage']=$prix['NombreMenage'];
-                $_SESSION[$maison.'PrixMenageHT']=$prix['PrixMenageHT'];
-                $_SESSION[$maison.'TvaMenage']=$prix['TvaMenage'];
-
-            }else {
-                $_SESSION[$maison]='Pas dispo';
-            }
-        }
-        return;
-    }
 
     /**
      *A AMELIORER
@@ -200,7 +157,7 @@ class Sejour {
      * @param $maison
      * @return array
      */
-    public function PrixDuSejour($maison){
+    private function PrixDuSejour($maison){
 
                 $parametres = $this->chargementParametre();
 
@@ -307,6 +264,11 @@ class Sejour {
 
         return $NombreNuit->format('%a');
 
+    }
+
+
+    private function formateDateYmd($date){
+      return substr($date,6,4).'-'.substr($date,3,2).'-'.substr($date,0,2);
     }
 
     /**

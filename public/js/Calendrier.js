@@ -6,7 +6,7 @@ var allCal = document.getElementsByClassName('calDiv');
 
 // modifier howMuchCal afin d'afficher le nombre de calendrier voulu,
 // il est maintenant inutile de modifier la variable php $pas
-var howMuchCal = 1;
+var howMuchCal = 3;
 
 initCal(allCal,howMuchCal);
 
@@ -68,14 +68,14 @@ function selectDay(elem,list){
   // si la liste d'elem = 1, on verifie que l'elem en cours correspond a une date superieur a l'elem de la list
   if (list.length == 1) {
 
-    var elemYear = elem.id.substring(0, 4);
-    var list1Year = list[0].substring(0, 4);
+    var elemYear = elem.id.substring(6, 10);
+    var list1Year = list[0].substring(6, 13);
 
-    var elemMonth = elem.id.substring(5, 7);
-    var list1Month = list[0].substring(5, 7);
+    var elemMonth = elem.id.substring(3, 5);
+    var list1Month = list[0].substring(3, 5);
 
-    var elemDay = elem.id.substring(8, 10);
-    var list1Day = list[0].substring(8, 10);
+    var elemDay = elem.id.substring(0, 2);
+    var list1Day = list[0].substring(0, 2);
 
     var listDate = elemYear+elemMonth+elemDay;
     var elemDate = list1Year+list1Month+list1Day;

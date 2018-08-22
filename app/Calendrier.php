@@ -31,8 +31,8 @@ class Calendrier
     public function afficherCalendrier($maison) {
 
         if ($this->data['arrivee']!=null) {
-            $moisCourant= date("m",strtotime($this->data['arrivee']));
-            $anneeCourante=date("Y",strtotime($this->data['arrivee']));
+            $moisCourant= substr($this->data['arrivee'],3,2);
+            $anneeCourante= substr($this->data['arrivee'],6,4);
         } else {
             $moisCourant = date("m");
             $anneeCourante = date("Y");
@@ -98,12 +98,13 @@ class Calendrier
                 $afficheJour = Date("j", mktime(0, 0, 0,
                     $this->getMonth($periode), 1 + $pas, $this->getYear($periode)));
                     $jour = Date("Y-m-d",mktime(0, 0, 0, $this->getMonth($periode), 1 + $pas, $this->getYear($periode))) ;
+                    $jourFormatFrench = Date("d/m/Y",strtotime($jour));
                     $num_id=strtotime($jour)/86400;
                 if (Date("Y-m-d", mktime(0, 0, 0, $this->getMonth($periode),
                         1 + $pas, $this->getYear($periode))) <= Date("Y-m-d")) {
-                    $class = " class=\"itemPastItem $num_id\" id=\"".$jour."\"   onclick=\" \""; if (Date("Y-m-d", mktime(0, 0, 0, $this->getMonth($periode),
+                    $class = " class=\"itemPastItem $num_id\" id=\"".$jourFormatFrench."\"   onclick=\" \""; if (Date("Y-m-d", mktime(0, 0, 0, $this->getMonth($periode),
                             1 + $pas, $this->getYear($periode))) == Date("Y-m-d")) {
-                        $class = " class=\"itemCurrentItem $num_id\" id=\"".$jour."\" onmouseover=\"showDay(this,dayList)\"   onclick=\"selectDay(this,dayList)\""; }}
+                        $class = " class=\"itemCurrentItem $num_id\" id=\"".$jourFormatFrench."\" onmouseover=\"showDay(this,dayList)\"   onclick=\"selectDay(this,dayList)\""; }}
 
 
                 else {
@@ -112,7 +113,7 @@ class Calendrier
                     // 1 est toujours vrai => on affiche un lien à chaque fois
                     // A vous de faire les tests nécessaire si vous gérer un agenda par exemple
                     if ($rep!=false) {
-                        $class = " class=\"itemExistingItem $num_id\" id=\"".$jour."\"   onclick=\" \"";
+                        $class = " class=\"itemExistingItem $num_id\" id=\"".$jourFormatFrench."\"   onclick=\" \"";
                         $afficheJour=Date("j",
                             mktime(0, 0, 0, $this->getMonth($periode), 1 +
                                 $pas, $this->getYear($periode)));
@@ -120,7 +121,7 @@ class Calendrier
                     }
                     else {
                         //$jour =strtotime($jour);
-                        $class = " class=\"itemPickableItem $num_id\" id=\"".$jour."\" onmouseover=\"showDay(this,dayList)\"   onclick=\"selectDay(this,dayList)\"";
+                        $class = " class=\"itemPickableItem $num_id\" id=\"".$jourFormatFrench."\" onmouseover=\"showDay(this,dayList)\"   onclick=\"selectDay(this,dayList)\"";
                         $afficheJour=Date("j",
                             mktime(0, 0, 0, $this->getMonth($periode), 1 +
                                 $pas, $this->getYear($periode)));

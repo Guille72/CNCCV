@@ -59,6 +59,19 @@
             <h5 class="white-text">Chez Nous comme Chez Vous</h5>
             <p class="grey-text text-lighten-4">Location de maison sur courte et moyenne durée au Mans</p>
         </div>
+        <br>
+        <div class="divider">
+        </div>
+        <br>
+        <div class="col s12">
+            <h5 class="white-text center">Liens</h5>
+            <ul class="center">
+                <li><a class="grey-text text-lighten-3" href="index.php?p=ml">Mentions légales</a></li>
+                <li><a class="grey-text text-lighten-3" href="index.php?p=cu">Conditions d'utilisations</a></li>
+                <li><a class="grey-text text-lighten-3" href="#">Qui sommes nous</a></li>
+                <br>
+            </ul>
+        </div>
 
         <br>
     </div>

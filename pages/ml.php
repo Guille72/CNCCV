@@ -1,9 +1,5 @@
-<?php require '../pages/navbarHaut.php';
-if ($_SESSION['arrivee']!=null) {
-    require 'navbar.php';
-}else {
-    require 'navbar.php';
-}
+<?php require '../pages/navbar.php';
+
 ?>
 
 <div class="container">
