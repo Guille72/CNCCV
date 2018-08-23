@@ -63,32 +63,28 @@ class Sejour {
          foreach ($maisons as $maison) {
              //var_dump($maison);
              $persMax=$this->db->prepareSMEF('SELECT persMax FROM logements WHERE nomMaison= ?',[$maison]);
-             $_SESSION['dispo'.$maison]=$this->disponibilite($maison);
-             if ($_SESSION['dispo'.$maison]=== true && $this->data['NombrePersonne'] > $persMax['persMax']){
-                 $_SESSION[$maison] = 'Limité à '.$persMax['persMax'].' personnes';
-             }elseif ($_SESSION['dispo'.$maison]=== true && $this->data['NombrePersonne'] <= $persMax['persMax']) {
+             $dispoPrix['dispo'.$maison]=$this->disponibilite($maison);
+             if ($dispoPrix['dispo'.$maison]=== true && $this->data['NombrePersonne'] > $persMax['persMax']){
+                 $dispoPrix[$maison] = 'Limité à '.$persMax['persMax'].' personnes';
+             }elseif ($dispoPrix['dispo'.$maison]=== true && $this->data['NombrePersonne'] <= $persMax['persMax']) {
                  $prix=$this->PrixDuSejour($maison);
-                 $_SESSION[$maison]=$prix['PrixSejourTotalTTC'].' euros';
-                 $_SESSION[$maison.'PrixSejourTotalTTC']=$prix['PrixSejourTotalTTC'];
-                 $_SESSION[$maison.'TaxeSejour']=$prix['TaxeSejour'];
-                 $_SESSION[$maison.'PrixSejourHT']=$prix['PrixSejourHT'];
-                 $_SESSION[$maison.'TvaSejour']=$prix['TvaSejour'];
-                 $_SESSION[$maison.'NombreMenage']=$prix['NombreMenage'];
-                 $_SESSION[$maison.'PrixMenageHT']=$prix['PrixMenageHT'];
-                 $_SESSION[$maison.'TvaMenage']=$prix['TvaMenage'];
+                 $dispoPrix[$maison]=$prix['PrixSejourTotalTTC'].' euros';
+                 $dispoPrix[$maison.'PrixSejourTotalTTC']=$prix['PrixSejourTotalTTC'];
+                 $dispoPrix[$maison.'TaxeSejour']=$prix['TaxeSejour'];
+                 $dispoPrix[$maison.'PrixSejourHT']=$prix['PrixSejourHT'];
+                 $dispoPrix[$maison.'TvaSejour']=$prix['TvaSejour'];
+                 $dispoPrix[$maison.'NombreMenage']=$prix['NombreMenage'];
+                 $dispoPrix[$maison.'PrixMenageHT']=$prix['PrixMenageHT'];
+                 $dispoPrix[$maison.'TvaMenage']=$prix['TvaMenage'];
 
              }else {
-                 $_SESSION[$maison]='Pas dispo';
+                 $dispoPrix[$maison]='Pas dispo';
              }
          }
-         return;
+         return $dispoPrix;
      }
 
-    /**
-     *
-     * Génère le formulaire
-     * @return string
-     */
+
     /**
      * teste la disponibilité d'un séjour sur la $maison sélectionnée
      * @param string $maison
@@ -96,11 +92,8 @@ class Sejour {
      *
      */
 
-
     private function disponibilite($maison){
 
-        $this->data['arrivee']= date('Y-m-d',strtotime($this->data['arrivee']));
-        $this->data['depart']= date('Y-m-d',strtotime($this->data['depart']));
 
         $rep = $this->db->prepareSMEF('SELECT * FROM bookings WHERE bookings.annulation IS NULL AND ? BETWEEN bookings.arrivee AND date_sub(bookings.depart, interval 1 day) AND bookings.nomMaison = ?', array($this->data['arrivee'], $maison));
         $rep2 = $this->db->prepareSMEF('SELECT * FROM bookings WHERE bookings.annulation IS NULL AND ? BETWEEN date_add(bookings.arrivee,interval 1 day) AND bookings.depart AND bookings.nomMaison = ?', array($this->data['depart'], $maison));

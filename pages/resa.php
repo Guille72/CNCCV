@@ -1,19 +1,6 @@
 <?php
 
-// instanciation de Sejour
-$Sejour=$app->getSejour($_POST);
 
-
-//Traitement des résultats du formulaire
-if ($_POST!=null) {$dispoPrix = $Sejour->dispoPrix();}
-
-//Affichage de la Barre de navigation selon résultats (ou non) du formulaire
-// if ($_SESSION['arrivee']!=null) {
-//     require 'navbarBasAvecPost.php';
-//     require 'resultatMaison.php';
-// }else {
-//     require 'navbarBas.php';
-// }
 
 //Instanciation du calendrier
 $Calendrier=$app->getCalendrier($_SESSION);

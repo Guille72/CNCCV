@@ -1,3 +1,12 @@
+<?php
+// instanciation de Sejour
+$Sejour=$app->getSejour($_POST);
+
+//Traitement des résultats du formulaire
+if ($_POST!=null) {$dispoPrix = $Sejour->dispoPrix();}
+?>
+
+
 <!-- PC -->
 <nav id="nav" class="sticky hide-on-med-and-down">
   <div class="nav-wrapper">
@@ -83,11 +92,11 @@
 
             <tr>
               <td><a href="index.php?p=<?= $maison ?>">Chez <?= ucfirst($maison) ?></a></td>
-              <td><?= $_SESSION[$maison] ?></td>
+              <td><?= $dispoPrix[$maison] ?></td>
               <td>
               <?php
 
-              if ($_SESSION[$maison] != "Pas dispo") {
+              if ($dispoPrix[$maison] != "Pas dispo") {
                 echo "<i class='material-icons colorRed left'>send</i>";
               }
               else {
